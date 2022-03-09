@@ -3,9 +3,14 @@ package org.example.services;
 import org.example.entities.Horse;
 import org.example.entities.Pair;
 import org.example.entities.Rider;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.*;
 
+@Service
+@Lazy
 public class RacingImpl implements Racing {
 
     public List<Pair> creator() {
@@ -30,6 +35,7 @@ public class RacingImpl implements Racing {
 
     }
 
+    @PostConstruct
     @Override
     public void printRaceResult() throws InterruptedException {
 
