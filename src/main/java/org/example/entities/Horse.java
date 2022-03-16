@@ -5,16 +5,12 @@ public class Horse {
     private String name;
     private Integer speed;
 
-    Integer init() {
-        speed = (int)(18 + Math.random()*42);
-        return speed;
-    }
-
     public Horse() {
     }
-
-    public Horse(String name) {
+    
+    public Horse(String name, Integer speed) {
         this.name = name;
+        this.speed = speed;
     }
 
     public String getName() {
@@ -26,13 +22,14 @@ public class Horse {
     }
 
     public Integer getSpeed() {
-        return init();
+        return speed;
     }
-
+    
     @Override
     public String toString() {
         return "Horse{" +
                 "name='" + name + '\'' +
+                ", speed=" + speed +
                 '}';
     }
 }
