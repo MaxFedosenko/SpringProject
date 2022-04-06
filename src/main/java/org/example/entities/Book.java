@@ -1,14 +1,9 @@
 package org.example.entities;
 
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.RequestScope;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-@Component
-@RequestScope
 @Entity
 @Table(name = "books")
 public class Book {
@@ -16,13 +11,11 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "nameBook", nullable = false)
+    @Column(name = "nameBook")
     @NotBlank
-    @Size(min = 3, max = 30)
+    @Size(max = 20)
     private String name;
-    @Column(name = "authorName", nullable = false)
-    @NotBlank
-    @Size(min = 5, max = 10)
+    @Column(name = "authorName")
     private String author;
     
     public Book() {

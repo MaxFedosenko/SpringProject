@@ -36,7 +36,7 @@ public class SpringMvcConfigurator implements WebApplicationInitializer {
         Book book5 = new Book("FightClub", "Palanik");
         Book book6 = new Book("GenerationP", "Pelevin");
         Book book7 = new Book("HarryPotter2", "Rowling");
-        Book book8 = new Book("Stalker3", "Bobl");
+        Book book8 = new Book("Stalker3", "Boble");
         Book book9 = new Book("HarryPotter4", "Rowling");
         Book book10 = new Book("HarryPotter5", "Rowling");
         session.save(book1);

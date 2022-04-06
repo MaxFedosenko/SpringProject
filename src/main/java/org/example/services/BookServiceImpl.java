@@ -3,14 +3,16 @@ package org.example.services;
 import org.example.entities.Book;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import static org.example.config.HibernateConfiguration.sessionFactory;
 
+@Service
 public class BookServiceImpl implements BookService {
     @Override
-    public List<Book> getBooks(String authorName) {
+    public List<Book> getBookByAuthor(String authorName) {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -26,7 +28,7 @@ public class BookServiceImpl implements BookService {
     }
     
     @Override
-    public List<Book> getBooksByPart(String nameBook) {
+    public List<Book> getBooksByPartName(String nameBook) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
     

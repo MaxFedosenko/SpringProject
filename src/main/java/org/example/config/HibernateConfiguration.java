@@ -3,14 +3,18 @@ package org.example.config;
 import org.example.entities.Book;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
+@org.springframework.context.annotation.Configuration
+@ComponentScan("org.example.config")
 public class HibernateConfiguration {
 
     public static SessionFactory sessionFactory;
     private HibernateConfiguration(){
 
     }
-    
+    @Bean
     public static void prepareHibernate() {
         Configuration configuration = new Configuration();
         configuration.setProperty("hibernate.connection.driver_class", "org.postgresql.Driver");

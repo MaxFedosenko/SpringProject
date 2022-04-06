@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface BookService {
 
-    List<Book> getBooks(String authorName);
+    List<Book> getBookByAuthor(String authorName);
     
-    List<Book> getBooksByPart(String nameBook);
+    List<Book> getBooksByPartName(String nameBook);
     
     Book save(Book book);
 
