@@ -7,18 +7,13 @@ public class Pair {
     private Rider rider;
     private Integer sumIndex;
 
+    public Pair() {
+    }
+    
     public Pair(Long id, Horse horse, Rider rider) {
         this.id = id;
         this.horse = horse;
         this.rider = rider;
-    }
-
-    public Pair() {
-    }
-
-    Integer init() {
-        sumIndex = horse.getSpeed() + rider.getExp();
-        return sumIndex;
     }
 
     public Long getId() {
@@ -30,7 +25,15 @@ public class Pair {
     }
 
     public Integer getSumIndex() {
-        return sumIndex = horse.getSpeed() + rider.getExp();
+        return sumIndex;
+    }
+    
+    public void setSumIndex(Integer sumIndex) {
+        this.sumIndex = sumIndex;
+    }
+    
+    public void sumIndex() {
+        this.sumIndex = horse.getSpeed() + rider.getExp();
     }
 
     public Horse getHorse() {
@@ -48,12 +51,13 @@ public class Pair {
     public void setRider(Rider rider) {
         this.rider = rider;
     }
-
+    
     @Override
     public String toString() {
-        return "Pair{" +
-                "horse=" + horse +
+        return "Pair №" + id + "{" +
+                ", horse=" + horse +
                 ", rider=" + rider +
+                ", sumIndex=" + sumIndex +
                 '}';
     }
 }
