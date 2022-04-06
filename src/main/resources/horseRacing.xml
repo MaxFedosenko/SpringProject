@@ -1,24 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="horse1" class="org.example.entities.Horse"/>
-    <bean name="horse2" class="org.example.entities.Horse"/>
-    <bean name="horse3" class="org.example.entities.Horse"/>
+    <bean name="horse1" class="org.example.entities.Horse" scope="singleton">
+        <constructor-arg name="name" type="java.lang.String" value="horse1"/>
+        <constructor-arg name="speed" type="java.lang.Integer" value="18"/>
+    </bean>
+    <bean name="horse2" class="org.example.entities.Horse" scope="singleton">
+        <constructor-arg name="name" type="java.lang.String" value="horse2"/>
+        <constructor-arg name="speed" type="java.lang.Integer" value="18"/>
+    </bean>
+    <bean name="horse3" class="org.example.entities.Horse" scope="singleton">
+        <constructor-arg name="name" type="java.lang.String" value="horse3"/>
+        <constructor-arg name="speed" type="java.lang.Integer" value="18"/>
+    </bean>
 
-    <bean name="rider1" class="org.example.entities.Rider"/>
-    <bean name="rider2" class="org.example.entities.Rider"/>
-    <bean name="rider3" class="org.example.entities.Rider"/>
+    <bean name="rider1" class="org.example.entities.Rider" scope="singleton">
+        <constructor-arg name="name" type="java.lang.String" value="rider1"/>
+        <constructor-arg name="exp" type="java.lang.Integer" value="5"/>
+    </bean>
+    <bean name="rider2" class="org.example.entities.Rider" scope="singleton">
+        <constructor-arg name="name" type="java.lang.String" value="rider2"/>
+        <constructor-arg name="exp" type="java.lang.Integer" value="5"/>
+    </bean>
+    <bean name="rider3" class="org.example.entities.Rider" scope="singleton">
+        <constructor-arg name="name" type="java.lang.String" value="rider3"/>
+        <constructor-arg name="exp" type="java.lang.Integer" value="5"/>
+    </bean>
 
-    <bean lazy-init="true" name="racing" class="org.example.services.RacingImpl"/>
 
-    <bean lazy-init="true" name="pair1" class="org.example.entities.Pair" init-method="init"/>
-    <bean lazy-init="true" name="pair2" class="org.example.entities.Pair" init-method="init"/>
-    <bean lazy-init="true" name="pair3" class="org.example.entities.Pair" init-method="init"/>
+    <bean lazy-init="true" name="pair1" class="org.example.entities.Pair" init-method="sumIndex" scope="singleton">
+        <constructor-arg name="id" type="java.lang.Long" value="1"/>
+        <constructor-arg name="horse" type="org.example.entities.Horse" ref="horse1"/>
+        <constructor-arg name="rider" type="org.example.entities.Rider" ref="rider1"/>
+    </bean>
+    <bean lazy-init="true" name="pair2" class="org.example.entities.Pair" init-method="sumIndex" scope="singleton">
+        <constructor-arg name="id" type="java.lang.Long" value="2"/>
+        <constructor-arg name="horse" type="org.example.entities.Horse" ref="horse2"/>
+        <constructor-arg name="rider" ref="rider2"/>
+    </bean>
+    <bean lazy-init="true" name="pair3" class="org.example.entities.Pair" init-method="sumIndex" scope="singleton">
+        <constructor-arg name="id" type="java.lang.Long" value="3"/>
+        <constructor-arg name="horse" type="org.example.entities.Horse" ref="horse3"/>
+        <constructor-arg name="rider" type="org.example.entities.Rider" ref="rider3"/>
+    </bean>
 
 
-
-
+    <bean lazy-init="true" name="racing" class="org.example.services.RacingImpl" scope="singleton">
+        <constructor-arg name="pairs">
+            <list>
+                <ref bean="pair1"/>
+                <ref bean="pair2"/>
+                <ref bean="pair3"/>
+            </list>
+        </constructor-arg>
+    </bean>
 
 </beans>

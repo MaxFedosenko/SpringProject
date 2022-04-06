@@ -7,11 +7,7 @@ public class Rider {
 
     public Rider() {
     }
-
-    public Rider(String name) {
-        this.name = name;
-    }
-
+    
     public Rider(String name, Integer exp) {
         this.name = name;
         this.exp = exp;

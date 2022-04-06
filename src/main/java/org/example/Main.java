@@ -9,6 +9,8 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         ApplicationContext context = new AnnotationConfigApplicationContext("org.example.config");
-        context.getBean(Racing.class);
+        Racing bean = context.getBean(Racing.class);
+        bean.printRaceResult();
+        
     }
 }
