@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <bean name="viber" class="org.example.sender.Viber" init-method="prepareViberConnection"
+    destroy-method="closeConnection" scope="singleton"/>
+
+    <bean name="telega" class="org.example.sender.Telegram" init-method="postConstruct" primary="true"/>
+
+    <bean lazy-init="true" name="updater" class="org.example.services.UpdateNotifyImpl" init-method="postConstruct"
+          destroy-method="destroy" scope="singleton">
+        <constructor-arg name="messageSender" ref="telega"/>
+        <constructor-arg name="helloText" value="Hello"/>
+        <property name="title" value="super updater"/>
+    </bean>
+</beans>
